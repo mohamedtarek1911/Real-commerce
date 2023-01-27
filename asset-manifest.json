@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/Real-commerce/static/css/main.db770413.css",
+    "main.js": "/Real-commerce/static/js/main.fc637a25.js",
+    "static/media/laptops.png": "/Real-commerce/static/media/laptops.a5a6ab642345b5d38784.png",
+    "static/media/slider4.png": "/Real-commerce/static/media/slider4.8049dedb7c458a0534a5.png",
+    "static/media/prod4.png": "/Real-commerce/static/media/prod4.60c973db7361e54bb831.png",
+    "static/media/slider1.png": "/Real-commerce/static/media/slider1.2d6dc5a9c0fd289461ee.png",
+    "static/media/prod3.png": "/Real-commerce/static/media/prod3.c073f706ba444448c519.png",
+    "static/media/fa-solid-900.ttf": "/Real-commerce/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
+    "static/media/mobile2.png": "/Real-commerce/static/media/mobile2.1b3cf13086e809bb8d7d.png",
+    "static/media/mobile1.png": "/Real-commerce/static/media/mobile1.1997f77f2ce6b9677dc6.png",
+    "static/media/item.png": "/Real-commerce/static/media/item.79eafdfba70f40ed66c5.png",
+    "static/media/mobile.png": "/Real-commerce/static/media/mobile.1c4bc892a60e36742151.png",
+    "static/media/prod1.png": "/Real-commerce/static/media/prod1.9f9a0d840227c590ac5d.png",
+    "static/media/fa-brands-400.ttf": "/Real-commerce/static/media/fa-brands-400.450a5c898f0b184b968b.ttf",
+    "static/media/fa-solid-900.woff2": "/Real-commerce/static/media/fa-solid-900.41c0f706d8ce93933771.woff2",
+    "static/media/fa-brands-400.woff2": "/Real-commerce/static/media/fa-brands-400.3ac6859b28be946745f9.woff2",
+    "static/media/clothe.png": "/Real-commerce/static/media/clothe.63497de16012693f71f1.png",
+    "static/media/fa-regular-400.ttf": "/Real-commerce/static/media/fa-regular-400.3cd9fb8fcec4ad0f99d4.ttf",
+    "static/media/labtop.png": "/Real-commerce/static/media/labtop.72427ac57eccb337dd2b.png",
+    "static/media/fa-regular-400.woff2": "/Real-commerce/static/media/fa-regular-400.1f3772178d9e5bed38a6.woff2",
+    "static/media/avatar.png": "/Real-commerce/static/media/avatar.f5ed20588df8bb546e2d.png",
+    "static/media/brand3.png": "/Real-commerce/static/media/brand3.1a0049b1f1a261d0e6d1.png",
+    "static/media/fa-v4compatibility.ttf": "/Real-commerce/static/media/fa-v4compatibility.e314b618134d5be20996.ttf",
+    "static/media/fa-v4compatibility.woff2": "/Real-commerce/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
+    "index.html": "/Real-commerce/index.html",
+    "main.db770413.css.map": "/Real-commerce/static/css/main.db770413.css.map",
+    "main.fc637a25.js.map": "/Real-commerce/static/js/main.fc637a25.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db770413.css",
+    "static/js/main.fc637a25.js"
+  ]
+}
