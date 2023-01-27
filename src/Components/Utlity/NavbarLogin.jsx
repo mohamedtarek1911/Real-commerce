@@ -3,7 +3,7 @@ import { Container, FormControl, Nav, Navbar } from "react-bootstrap";
 import login from "../../Assets/images/login.png";
 import cart from "../../Assets/images/cart.png";
 import logo from "../../Assets/images/logo.png";
-
+// import { Link } from "react-router-dom";
 export default function NavbarLogin() {
   return (
     <>
@@ -11,7 +11,7 @@ export default function NavbarLogin() {
         <Container>
           <Navbar.Brand>
             <a href="/">
-              <img src={logo} className="logo" alt="1" />
+              <img src={logo} alt="fkfkfhf" className="logo" />
             </a>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -30,6 +30,7 @@ export default function NavbarLogin() {
                 <img src={login} className="login-img" alt="sfvs" />
                 <p style={{ color: "white" }}>دخول</p>
               </Nav.Link>
+
               <Nav.Link
                 href="/cart"
                 className="nav-text d-flex mt-3 justify-content-center"
