@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from "./Pages/Home/HomePage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import NavbarLogin from "./Components/Utlity/NavbarLogin";
 import Footer from "./Components/Utlity/Footer";
 import LoginPage from "./Pages/Auth/LoginPage";
@@ -32,6 +32,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/register" element={<RegisterPage />} />
