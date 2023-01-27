@@ -29,7 +29,7 @@ export default function App() {
     <>
       <div className="font">
         <NavbarLogin />
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
@@ -76,7 +76,7 @@ export default function App() {
             />
             <Route path="/user/profile" element={<UserProfilePage />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
         <Footer />
       </div>
     </>
