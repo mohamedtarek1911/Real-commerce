@@ -47,11 +47,13 @@ export default function NavbarLogin() {
       <Navbar className="sticky-top" bg="dark" variant="dark" expand="sm">
         <Container>
           {/* <NavLink></NavLink> */}
-          <Navbar.Brand>
-            <a href="/">
-              <img src={logo} className="logo" />
-            </a>
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>
+              <a>
+                <img src={logo} className="logo" />
+              </a>
+            </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <FormControl
@@ -61,18 +63,25 @@ export default function NavbarLogin() {
               aria-label="Search"
             />
             <Nav className="me-auto">
-              <Nav.Link href="/login">
-                <a className="nav-text d-flex mt-3 justify-content-center text-decoration-none">
+              <Link
+                className="nav-text d-flex mt-3 justify-content-center text-decoration-none"
+                to="/login"
+              >
+                <a className=" mx-2 nav-text d-flex mt-3 justify-content-center text-decoration-none">
                   <img src={login} className="login-img" alt="sfvs" />
                   <p style={{ color: "white" }}>دخول</p>
                 </a>
-              </Nav.Link>
-              <Nav.Link href="/cart" style={{ color: "white" }}>
+              </Link>
+              <Link
+                className="nav-text mx-2 d-flex mt-3 justify-content-center text-decoration-none"
+                to="/cart"
+                style={{ color: "white" }}
+              >
                 <a className="nav-text d-flex mt-3 justify-content-center text-decoration-none">
                   <img src={cart} className="login-img" alt="sfvs" />
                   <p style={{ color: "white" }}>العربه</p>
                 </a>
-              </Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
