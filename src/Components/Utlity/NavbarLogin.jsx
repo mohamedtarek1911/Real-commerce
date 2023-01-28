@@ -60,20 +60,23 @@ export default function NavbarLogin() {
               aria-label="Search"
             />
             <Nav className="me-auto">
-              <Nav.Link
-                href="/login"
-                className="nav-text d-flex mt-3 justify-content-center"
-              >
-                <img src={login} className="login-img" alt="sfvs" />
-                <p style={{ color: "white" }}>دخول</p>
+              <Nav.Link href="/login">
+                <a
+                  className="nav-text d-flex mt-3 justify-content-center text-decoration-none"
+                  href="/login"
+                >
+                  <img src={login} className="login-img" alt="sfvs" />
+                  <p style={{ color: "white" }}>دخول</p>
+                </a>
               </Nav.Link>
-              <Nav.Link
-                href="/cart"
-                className="nav-text d-flex mt-3 justify-content-center"
-                style={{ color: "white" }}
-              >
-                <img src={cart} className="login-img" alt="sfvs" />
-                <p style={{ color: "white" }}>العربه</p>
+              <Nav.Link href="/cart" style={{ color: "white" }}>
+                <a
+                  className="nav-text d-flex mt-3 justify-content-center text-decoration-none"
+                  href="/cart"
+                >
+                  <img src={cart} className="login-img" alt="sfvs" />
+                  <p style={{ color: "white" }}>العربه</p>
+                </a>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
