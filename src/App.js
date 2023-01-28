@@ -28,8 +28,8 @@ export default function App() {
   return (
     <>
       <div className="font">
-        <NavbarLogin />
         <BrowserRouter>
+          <NavbarLogin />
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />

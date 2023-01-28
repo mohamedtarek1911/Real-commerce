@@ -3,7 +3,7 @@ import { Container, FormControl, Nav, Navbar } from "react-bootstrap";
 import login from "../../Assets/images/login.png";
 import cart from "../../Assets/images/cart.png";
 import logo from "../../Assets/images/logo.png";
-// import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export default function NavbarLogin() {
   return (
     <>
@@ -46,6 +46,7 @@ export default function NavbarLogin() {
 
       <Navbar className="sticky-top" bg="dark" variant="dark" expand="sm">
         <Container>
+          {/* <NavLink></NavLink> */}
           <Navbar.Brand>
             <a href="/">
               <img src={logo} className="logo" />
@@ -61,19 +62,13 @@ export default function NavbarLogin() {
             />
             <Nav className="me-auto">
               <Nav.Link href="/login">
-                <a
-                  className="nav-text d-flex mt-3 justify-content-center text-decoration-none"
-                  href="/login"
-                >
+                <a className="nav-text d-flex mt-3 justify-content-center text-decoration-none">
                   <img src={login} className="login-img" alt="sfvs" />
                   <p style={{ color: "white" }}>دخول</p>
                 </a>
               </Nav.Link>
               <Nav.Link href="/cart" style={{ color: "white" }}>
-                <a
-                  className="nav-text d-flex mt-3 justify-content-center text-decoration-none"
-                  href="/cart"
-                >
+                <a className="nav-text d-flex mt-3 justify-content-center text-decoration-none">
                   <img src={cart} className="login-img" alt="sfvs" />
                   <p style={{ color: "white" }}>العربه</p>
                 </a>
