@@ -7,7 +7,7 @@ import Pagination from "../../Components/Utlity/Pagination";
 export default function AdminAllOrderPage() {
   return (
     <>
-      <div className="mt-2" style={{ minHeight: "730px" }}>
+      <div className="mt-2" style={{ minHeight: "0px" }}>
         <Container>
           <Row>
             <Col md="3" xs="2" sm="2">
@@ -16,7 +16,6 @@ export default function AdminAllOrderPage() {
             <Col md="9" xs="10" sm="10">
               <AdminAllOrders />
             </Col>
-            <Pagination />
           </Row>
         </Container>
       </div>

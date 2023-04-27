@@ -656,3 +656,44 @@ body {
   text-align: center;
 }
 /* end filter */
+
+/* model card */
+
+.btn-close {
+  position: absolute;
+  top: 40%;
+  left: 3%;
+}
+
+.modal-header {
+  position: relative;
+}
+
+.dropdown-toggle {
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  margin-top: 22px;
+}
+.dropdown-menu {
+  background-color: #212529 !important;
+  color: white !important;
+}
+.dropdown-item {
+  color: white !important;
+  text-align: center !important;
+}
+.dropdown-item:hover {
+  color: #212529 !important;
+  background-color: white !important;
+}
+
+.badge-postion {
+  top: 8% !important;
+  right: 20% !important;
+  font-size: 14px;
+}
+
+.width-50 {
+  width: 57% !important;
+}

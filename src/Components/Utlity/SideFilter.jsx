@@ -1,7 +1,18 @@
 import React from "react";
 import { Row } from "react-bootstrap";
+import SideFilterSearchHook from "../../Hook/Search/SideFilterSearchHook";
 
 export default function SideFilter() {
+  const [
+    category,
+    brand,
+    handleClickCategory,
+    handleClickBrand,
+    handlePriceFrom,
+    handlePriceTo,
+  ] = SideFilterSearchHook();
+  let localFrom = localStorage.getItem("priceFrom");
+  let localTo = localStorage.getItem("priceTo");
   return (
     <>
       <div className="mt-3">
@@ -9,47 +20,58 @@ export default function SideFilter() {
           <div className="d-flex flex-column mt-2">
             <div className="filter-title">الفئة</div>
             <div className="d-flex mt-3">
-              <input type="checkbox" value="" />
+              <input onChange={handleClickCategory} type="checkbox" value="0" />
               <div className="filter-sub me-2 ">الكل</div>
             </div>
-            <div className="d-flex mt-2">
-              <input type="checkbox" value="" />
-              <div className="filter-sub me-2 ">اجهزة منزلية</div>
-            </div>
-            <div className="d-flex mt-2">
-              <input type="checkbox" value="" />
-              <div className="filter-sub me-2 ">اجهزة منزلية</div>
-            </div>
-            <div className="d-flex mt-2">
-              <input type="checkbox" value="" />
-              <div className="filter-sub me-2 ">اجهزة منزلية</div>
-            </div>
-            <div className="d-flex mt-2">
-              <input type="checkbox" value="" />
-              <div className="filter-sub me-2 ">اجهزة منزلية</div>
-            </div>
+            {category ? (
+              category.map((item, index) => {
+                return (
+                  <div key={index} className="d-flex mt-2">
+                    <input
+                      onChange={handleClickCategory}
+                      type="checkbox"
+                      value={item._id}
+                    />
+                    <div className="filter-sub me-2 ">{item.name}</div>
+                  </div>
+                );
+              })
+            ) : (
+              <h6>لايوجد تصنيفات</h6>
+            )}
           </div>
 
           <div className="d-flex flex-column mt-2">
             <div className="filter-title mt-3">الماركة</div>
             <div className="d-flex mt-3">
-              <input type="checkbox" value="" />
+              <input onChange={handleClickBrand} type="checkbox" value="0" />
               <div className="filter-sub me-2 ">الكل</div>
             </div>
-            <div className="d-flex mt-2">
-              <input type="checkbox" value="" />
-              <div className="filter-sub me-2 ">ابل</div>
-            </div>
-            <div className="d-flex mt-2">
-              <input type="checkbox" value="" />
-              <div className="filter-sub me-2 ">سامسونج</div>
-            </div>
+
+            {brand ? (
+              brand.map((item, index) => {
+                return (
+                  <div key={index} className="d-flex mt-2">
+                    <input
+                      onChange={handleClickBrand}
+                      type="checkbox"
+                      value={item._id}
+                    />
+                    <div className="filter-sub me-2 ">{item.name}</div>
+                  </div>
+                );
+              })
+            ) : (
+              <h6>لايوجد ماركات </h6>
+            )}
           </div>
 
           <div className="filter-title my-3">السعر</div>
           <div className="d-flex">
             <p className="filter-sub my-2">من:</p>
             <input
+              value={localFrom}
+              onChange={handlePriceFrom}
               className="m-2 text-center"
               type="number"
               style={{ width: "50px", height: "25px" }}
@@ -58,6 +80,8 @@ export default function SideFilter() {
           <div className="d-flex">
             <p className="filter-sub my-2">الي:</p>
             <input
+              value={localTo}
+              onChange={handlePriceTo}
               className="m-2 text-center"
               type="number"
               style={{ width: "50px", height: "25px" }}

@@ -2,15 +2,23 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import UserAdressCard from "./UserAdressCard";
+import AllAddressHook from "../../Hook/User/AllAddressHook";
 
 export default function UserAllAdress() {
+  const [Address] = AllAddressHook();
+  console.log(Address);
   return (
     <>
       <div>
         <div className="admin-content-text pb-4">دفتر العنوانين</div>
-        <UserAdressCard />
-        <UserAdressCard />
-        <UserAdressCard />
+
+        {Address ? (
+          Address.map((item, index) => {
+            return <UserAdressCard key={index} item={item} />;
+          })
+        ) : (
+          <h5>لا يوجد عنوانين </h5>
+        )}
 
         <Row className="justify-content-center">
           <Col sm="5" className="d-flex justify-content-center">

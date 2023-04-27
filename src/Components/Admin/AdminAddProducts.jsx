@@ -1,7 +1,9 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import avatar from "../../Assets/images/avatar.png";
+import AddBrandHook from "../../Hook/Brand/AddBrandHook";
 // import add from "../../Assets/images/add.png";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function AdminAddProducts() {
   //   const onSelect = () => {};
@@ -11,6 +13,19 @@ export default function AdminAddProducts() {
   //     { name: "التصنيف الاول", id: 1 },
   //     { name: "التصنيف الثاني", id: 2 },
   //   ];
+  const [
+    dispatch,
+    Img,
+    Name,
+    loading,
+    isPress,
+    brand,
+    onImageChange,
+    handelSubmit,
+    onChangeName,
+    avatar,
+  ] = AddBrandHook();
+
   return (
     <>
       <div>
@@ -18,19 +33,48 @@ export default function AdminAddProducts() {
           <div className="admin-content-text pb-4">اضف ماركه جديده</div>
           <Col sm="8">
             <div className="text-form pb-2">صوره الماركه</div>
-            <img src={avatar} alt="" height="100px" width="120px" />
+            <div>
+              <label for="upload-photo">
+                <img
+                  src={Img}
+                  alt="fzx"
+                  height="100px"
+                  width="120px"
+                  style={{ cursor: "pointer" }}
+                />
+              </label>
+              <input
+                type="file"
+                name="photo"
+                onChange={onImageChange}
+                id="upload-photo"
+              />
+            </div>
             <input
               type="text"
+              value={Name}
               className="input-form d-block mt-3 px-3"
               placeholder="اسم الماركه"
+              onChange={onChangeName}
             />
           </Col>
         </Row>
         <Row>
           <Col sm="8" className="d-flex justify-content-end ">
-            <button className="btn-save d-inline mt-2 ">حفظ التعديلات</button>
+            <button onClick={handelSubmit} className="btn-save d-inline mt-2 ">
+              حفظ التعديلات
+            </button>
           </Col>
         </Row>
+
+        {isPress ? (
+          loading ? (
+            <Spinner animation="border" variant="primary" />
+          ) : (
+            <h4>تم الانتهاء</h4>
+          )
+        ) : null}
+        <ToastContainer />
       </div>
 
       {/* <div>

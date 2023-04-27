@@ -1,7 +1,18 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import AddUserHook from "../../Hook/User/AddUserHook";
+import { ToastContainer } from "react-toastify";
 
 export default function UserAddAdress() {
+  const [
+    Home,
+    AddressDetails,
+    PhoneNum,
+    handleEnterHome,
+    handleEnterAddressDetails,
+    handleEnterPhoneNum,
+    sumbit,
+  ] = AddUserHook();
   return (
     <>
       <div>
@@ -10,27 +21,38 @@ export default function UserAddAdress() {
           <Col sm="8">
             <input
               type="text"
+              value={Home}
+              onChange={handleEnterHome}
               className="input-form d-block mt-3 px-3"
               placeholder="تسمية العنوان مثلا(المنزل - العمل)"
             />
             <textarea
               className="input-form-area p-2 mt-3"
+              value={AddressDetails}
+              onChange={handleEnterAddressDetails}
               rows="4"
               cols="50"
               placeholder="العنوان بالتفصيل"
             />
             <input
               type="text"
+              value={PhoneNum}
+              onChange={handleEnterPhoneNum}
               className="input-form d-block mt-3 px-3"
               placeholder="رقم الهاتف"
+              maxLength={11}
             />
           </Col>
         </Row>
         <Row>
           <Col sm="8" className="d-flex justify-content-end ">
-            <button className="btn-save d-inline mt-2 ">اضافة عنوان</button>
+            <button onClick={sumbit} className="btn-save d-inline mt-2 ">
+              اضافة عنوان
+            </button>
           </Col>
         </Row>
+
+        <ToastContainer />
       </div>
     </>
   );

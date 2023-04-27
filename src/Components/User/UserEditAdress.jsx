@@ -1,7 +1,21 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import EditAddressHook from "../../Hook/User/EditAddressHook";
+import { useParams } from "react-router";
+import { ToastContainer } from "react-toastify";
 
 export default function UserEditAdress() {
+  const id = useParams();
+  console.log(id);
+  const [
+    NewHome,
+    NEWHomeDetails,
+    NEWPhone,
+    handaleEnterNewHome,
+    handaleEnterNewDetails,
+    handaleEnterNewPhone,
+    onSumbit,
+  ] = EditAddressHook(id);
   return (
     <>
       <div>
@@ -11,19 +25,22 @@ export default function UserEditAdress() {
             <input
               type="text"
               className="input-form d-block mt-3 px-3"
-              value="المنزل"
+              value={NewHome}
+              onChange={handaleEnterNewHome}
               placeholder="تسمية العنوان مثلا(المنزل - العمل)"
             />
             <textarea
               className="input-form-area p-2 mt-3"
               rows="4"
               cols="50"
-              value="القاهرة ٦ اكتوبر"
+              value={NEWHomeDetails}
+              onChange={handaleEnterNewDetails}
               placeholder="العنوان بالتفصيل"
             />
             <input
               type="text"
-              value="01213621735"
+              value={NEWPhone}
+              onChange={handaleEnterNewPhone}
               className="input-form d-block mt-3 px-3"
               placeholder="رقم الهاتف"
             />
@@ -31,12 +48,14 @@ export default function UserEditAdress() {
         </Row>
         <Row>
           <Col sm="8" className="d-flex justify-content-end ">
-            <button className="btn-save d-inline mt-2 ">
+            <button onClick={onSumbit} className="btn-save d-inline mt-2 ">
               حفظ تعديل العنوان
             </button>
           </Col>
         </Row>
       </div>
+
+      <ToastContainer />
     </>
   );
 }

@@ -1,7 +1,9 @@
+import { logDOM } from "@testing-library/react";
 import React from "react";
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default function CategoryCard({ background, img, title }) {
+export default function CategoryCard({ background, img, title, id }) {
   return (
     <>
       <Col
@@ -16,8 +18,13 @@ export default function CategoryCard({ background, img, title }) {
             className="categoty-card "
             style={{ backgroundColor: `${background}` }}
           ></div>
-          <img alt="zcv" src={img} className="categoty-card-img" />
-          <p className="categoty-card-text my-2">{title}</p>
+          <Link
+            to={`/Products/Category/${id}`}
+            style={{ textDecoration: "none" }}
+          >
+            <img alt="zcv" src={img} className="categoty-card-img" />
+            <p className="categoty-card-text my-2">{title}</p>
+          </Link>
         </div>
       </Col>
     </>

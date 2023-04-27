@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default function BrandCard({ img }) {
+export default function BrandCard({ img, id }) {
   return (
     <>
       <Col
@@ -21,7 +22,9 @@ export default function BrandCard({ img }) {
             backgroundColor: "#FFFFFF",
           }}
         >
-          <Card.Img style={{ width: "100%", height: "151px" }} src={img} />
+          <Link to={`/Products/brand/${id}`} style={{ textDecoration: "none" }}>
+            <Card.Img style={{ width: "100%", height: "151px" }} src={img} />
+          </Link>
         </Card>
       </Col>
     </>

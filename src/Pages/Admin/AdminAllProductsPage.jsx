@@ -3,8 +3,18 @@ import { Col, Container, Row } from "react-bootstrap";
 import AdminAllProducts from "../../Components/Admin/AdminAllProducts";
 import AdminSideBar from "../../Components/Admin/AdminSideBar";
 import Pagination from "../../Components/Utlity/Pagination";
-
+import ViewProductAdminHook from "../../Hook/AdminHook/ViewProductAdminHook";
 export default function AdminAllProductsPage() {
+  const [items, pagination, getPage] = ViewProductAdminHook();
+  if (items) {
+    console.log(items);
+  }
+  if (pagination) {
+    var pageCount = pagination;
+    console.log(pagination);
+  } else {
+    pageCount = 0;
+  }
   return (
     <>
       <div className="mt-2" style={{ minHeight: "730px" }}>
@@ -14,9 +24,11 @@ export default function AdminAllProductsPage() {
               <AdminSideBar />
             </Col>
             <Col md="9" xs="10" sm="10">
-              <AdminAllProducts />
+              <AdminAllProducts products={items} />
             </Col>
-            <Pagination />
+            {pageCount > 1 ? (
+              <Pagination pageCount={pageCount} onPress={getPage} />
+            ) : null}
           </Row>
         </Container>
       </div>

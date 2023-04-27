@@ -1,17 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Multiselect from "multiselect-react-dropdown";
 import avatar from "../../Assets/images/avatar.png";
 import add from "../../Assets/images/add.png";
-
+import MultiImageInput from "react-multiple-image-input";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllCategory } from "../../Redux/Actions/CategoryAction";
+import { getAllBrand } from "../../Redux/Actions/brandAction";
+import { CompactPicker } from "react-color";
+import { getOneCategory } from "../../Redux/Actions/SubCategoryAction";
+import { craeteProduct } from "../../Redux/Actions/ProductAction";
+import notify from "../../Hook/UseNotfications";
+import { ToastContainer } from "react-toastify";
+import AddProductHook from "../../Hook/Product/AddProductHook";
 export default function AdminNewProduct() {
-  const onSelect = () => {};
-  const onRemove = () => {};
+  const [
+    images,
+    setImages,
+    ProdName,
+    handleEnterName,
+    handleEnterDesc,
+    ProdDesc,
+    PriceBefore,
+    handleEnterPriceBefore,
+    PriceAfter,
+    handleEnterPriceAfter,
+    Qty,
+    handleEnterQantity,
+    handleSelectedCategory,
+    category,
+    options,
+    onSelect,
+    onRemove,
+    brand,
+    Colors,
+    removeColor,
+    showColor,
+    handleColorChange,
+    handleSubmit,
+    ShowColor,
+    handleSelectedBrand,
+  ] = AddProductHook();
 
-  const options = [
-    { name: "التصنيف الاول", id: 1 },
-    { name: "التصنيف الثاني", id: 2 },
-  ];
   return (
     <>
       <div>
@@ -19,40 +49,65 @@ export default function AdminNewProduct() {
           <div className="admin-content-text pb-4"> اضافه منتج جديد</div>
           <Col sm="8">
             <div className="text-form pb-2"> صور للمنتج</div>
-            <img src={avatar} alt="" height="100px" width="120px" />
+            <MultiImageInput
+              images={images}
+              setImages={setImages}
+              theme={"light"}
+              max={6}
+              allowCrop={false}
+            />
             <input
               type="text"
               className="input-form d-block mt-3 px-3"
               placeholder="اسم المنتج"
+              value={ProdName}
+              onChange={handleEnterName}
             />
             <textarea
               className="input-form-area p-2 mt-3"
               rows="4"
               cols="50"
               placeholder="وصف المنتج"
+              onChange={handleEnterDesc}
+              value={ProdDesc}
             />
             <input
               type="number"
               className="input-form d-block mt-3 px-3"
               placeholder="السعر قبل الخصم"
+              value={PriceBefore}
+              onChange={handleEnterPriceBefore}
             />
             <input
               type="number"
               className="input-form d-block mt-3 px-3"
               placeholder="سعر المنتج"
+              value={PriceAfter}
+              onChange={handleEnterPriceAfter}
+            />
+            <input
+              type="number"
+              className="input-form d-block mt-3 px-3"
+              placeholder="الكمية المتاحة"
+              value={Qty}
+              onChange={handleEnterQantity}
             />
             <select
-              name="languages"
-              id="lang"
+              name="cat"
               className="select input-form-area mt-3 px-2 "
+              onChange={handleSelectedCategory}
             >
-              <option value="val">التصنيف الرئيسي</option>
-              <option value="val">التصنيف الاول</option>
-              <option value="val2">التصنيف الثاني</option>
-              <option value="val2">التصنيف الثالث</option>
-              <option value="val2">التصنيف الرابع</option>
+              <option value="0">التصنيف الرئيسي</option>
+              {category.data
+                ? category.data.map((item) => {
+                    return (
+                      <option key={item._id} value={item._id}>
+                        {item.name}
+                      </option>
+                    );
+                  })
+                : null}
             </select>
-
             <Multiselect
               className="mt-2 text-end"
               placeholder="التصنيف الفرعي"
@@ -65,36 +120,61 @@ export default function AdminNewProduct() {
             <select
               name="brand"
               id="brand"
+              onChange={handleSelectedBrand}
               className="select input-form-area mt-3 px-2 "
             >
               <option value="val">الماركة</option>
-              <option value="val2">التصنيف الماركة الاولي</option>
-              <option value="val2">التصنيف الماركة الثانيه</option>
-              <option value="val2">التصنيف الرابع</option>
+              {brand.data
+                ? brand.data.map((item) => {
+                    return (
+                      <option key={item._id} value={item._id}>
+                        {item.name}
+                      </option>
+                    );
+                  })
+                : null}
             </select>
             <div className="text-form mt-3 "> الالوان المتاحه للمنتج</div>
             <div className="mt-1 d-flex">
-              <div
-                className="color ms-2 border  mt-1"
-                style={{ backgroundColor: "#E52C2C" }}
-              ></div>
-              <div
-                className="color ms-2 border mt-1 "
-                style={{ backgroundColor: "white" }}
-              ></div>
-              <div
-                className="color ms-2 border  mt-1"
-                style={{ backgroundColor: "black" }}
-              ></div>
-              <img src={add} alt="" width="30px" height="35px" className="" />
+              {Colors.length >= 1
+                ? Colors.map((color, index) => {
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => removeColor(color)}
+                        className="color ms-2 border  mt-1"
+                        style={{ backgroundColor: color }}
+                      ></div>
+                    );
+                  })
+                : null}
+
+              <img
+                src={add}
+                onClick={showColor}
+                alt=""
+                width="30px"
+                height="35px"
+                className=""
+                style={{ cursor: "pointer" }}
+              />
             </div>
+            {/* <CirclePicker />
+            CompactPicker
+            <SketchPicker /> */}
+            {ShowColor === true ? (
+              <CompactPicker onChangeComplete={handleColorChange} />
+            ) : null}
           </Col>
         </Row>
         <Row>
           <Col sm="8" className="d-flex justify-content-end ">
-            <button className="btn-save d-inline mt-2 ">حفظ التعديلات</button>
+            <button onClick={handleSubmit} className="btn-save d-inline mt-2 ">
+              حفظ المنتج
+            </button>
           </Col>
         </Row>
+        <ToastContainer />
       </div>
     </>
   );

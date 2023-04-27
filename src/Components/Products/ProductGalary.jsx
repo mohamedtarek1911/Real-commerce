@@ -1,26 +1,16 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
+import { useParams } from "react-router";
 import mobile from "../../Assets/images/mobile.png";
 import mobile2 from "../../Assets/images/mobile1.png";
 import mobile3 from "../../Assets/images/mobile2.png";
+import ViewProductDetailsHook from "../../Hook/Product/ViewProductDetailsHook";
 import LeftClick from "./LeftClick";
 import RightClick from "./RightClick";
 
 export default function ProductGalary() {
-  const images = [
-    {
-      original: mobile,
-      //   thumbnail: mobile2,
-    },
-    {
-      original: mobile2,
-      //   thumbnail: mobile3,
-    },
-    {
-      original: mobile3,
-      //   thumbnail: mobile,
-    },
-  ];
+  const { id } = useParams();
+  const [item, images, cat, brand, products] = ViewProductDetailsHook(id);
 
   return (
     <>
